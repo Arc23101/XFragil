@@ -1,0 +1,23 @@
+.principal{
+    height: 500px;
+    width: 400px;
+}
+.button{
+    height: 100%;
+    width: 25%;
+    margin-top: 20px;
+
+}
+.titulo{
+    height: 100%;
+    width: 75%;
+}
+.topPad{
+    display: flex;
+    height: 50px;
+    width: 100%;
+}
+.introducao{
+    height: 80%;
+    width: 100%;
+}
