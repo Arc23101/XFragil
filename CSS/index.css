@@ -1,16 +1,19 @@
 .principal{
     height: 500px;
     width: 400px;
+    background-color: rgb(228, 134, 11);
 }
 .button{
     height: 100%;
     width: 25%;
-    margin-top: 20px;
+    background-color: rgb(81, 144, 247);
 
 }
 .titulo{
     height: 100%;
     width: 75%;
+    background-color: rgb(81, 144, 247);
+
 }
 .topPad{
     display: flex;
@@ -20,4 +23,10 @@
 .introducao{
     height: 80%;
     width: 100%;
+    background-color: rgb(123, 124, 126);
+
+}
+.texto1{
+    height:80%;
+    width:80% ;
 }
