@@ -1,0 +1,37 @@
+<html>
+<head>
+    <script src="../JS/index.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/index.css"></head>
+<body>
+    <div class="princpal">
+        <div class="TopPad">
+            <div class="titulo">
+                <a href="../index.html">
+                <h2>Sindrome do X Fragil</h2>
+                </a>
+            </div>
+            <div class="button">
+                <a href="registro.html">
+                    <button>Registrar-se</button>
+                </a>
+            </div>
+        </div>
+        <div class="introducao">
+            <div class="form">
+                <form>
+                    <center>
+                    <input type="checkbox" onclick="DesabilitarPaci() " name="medico"/>
+                    <input type="checkbox" onclick="DesabilitarMedi() " name="paciente"/>  
+                    <p>Médico|Paciente</p>
+                    <input type="number" placeholder="CPF" name="cpf"/> <br>
+                    <input type="password" placeholder="Senha" name="senha"/><br>
+                    <button type="button" onclick="entrar()">Entrar</button> 
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
