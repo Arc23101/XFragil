@@ -1,0 +1,49 @@
+<html>
+<head>
+    <script src="../JS/index.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/index.css"></head>
+<body>
+    <div class="princpal">
+        <div class="TopPad">
+            <div class="titulo">
+                <a href="../index.html">
+                <h2>Sindrome do X Fragil</h2>
+                </a>
+            </div>
+            
+            </div>
+        </div>
+        <div class="introducao">
+            <div class="quiz">
+                <form>
+                    <center>
+                    <input type="text" placeholder="Nome do paciente: " name="nomeP"/><br>
+
+                    <input type="text" placeholder="Sexo do paciente:" name="sexo"/>
+                    <input type="checkbox" onclick="DesabilitarPaci() " name="Mas"/>
+                    <input type="checkbox" onclick="DesabilitarMedi() " name="Fem"/>  <br>
+
+            
+                    <input type="number" placeholder="Existe alguem com hisrorico de X fragil na familia:" name="historico"/>
+                    <input type="checkbox" onclick="DesabilitarPaci() " name="HisSim"/>
+                    <input type="checkbox" onclick="DesabilitarMedi() " name="HisNao"/> <br>
+
+                    <input type="password" placeholder="Tem o HÁBITO DE AGITAR AS MÃOS." name="agitarMaos"/>
+                    <input type="checkbox" onclick="DesabilitarPaci() " name="agitarSim"/>
+                    <input type="checkbox" onclick="DesabilitarMedi() " name="agitarN"/><br>
+
+                    <input type="password" placeholder="Confirmar senha" name="senhaconfi"/>
+                    <input type="checkbox" onclick="DesabilitarPaci() " name="agitarSim"/>
+                    <input type="checkbox" onclick="DesabilitarMedi() " name="agitarN"/> <br>
+
+                    <input type="checkbox" onclick="Salvar() " name="Salvar"/> <br>
+
+                    <a href="quiz2.html"><button type="button">Proxima pagina</button></a>                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
