@@ -1,6 +1,6 @@
 <html>
 <head>
-    <script src="../JS/index.js"></script>
+    <script src="../JS/index.js" defer></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="../CSS/index.css"></head>
@@ -17,30 +17,45 @@
         </div>
         <div class="introducao">
             <div class="quiz">
-                <form>
-                    <center>
-                    <input type="text" placeholder="Nome do paciente: " name="nomeP"/><br>
+                <form id="formQuiz1">
+                <center>
+                    <label>Nome do paciente:</label><br>
+                    <input type="text" id="nomeP" required /><br><br>
+                    
+                    <label>Sexo do paciente:</label><br>
+                    <input type="radio" name="sexo" value="Masculino" required> Masculino
+                    <input type="radio" name="sexo" value="Feminino"> Feminino<br><br>
 
-                    <input type="text" placeholder="Sexo do paciente:" name="sexo"/>
-                    <input type="checkbox" onclick="DesabilitarPaci() " name="Mas"/>
-                    <input type="checkbox" onclick="DesabilitarMedi() " name="Fem"/>  <br>
+                    <label>1. Há deficiência intelectual na família sem diagnóstico preciso?</label><br>
+                    <input type="radio" name="p1" value="Sim" required> Sim
+                    <input type="radio" name="p1" value="Nao"> Não<br><br>
 
-            
-                    <input type="number" placeholder="Existe alguem com hisrorico de X fragil na familia:" name="historico"/>
-                    <input type="checkbox" onclick="DesabilitarPaci() " name="HisSim"/>
-                    <input type="checkbox" onclick="DesabilitarMedi() " name="HisNao"/> <br>
+                    <label>2. Apresenta deficiência intelectual ou dificuldades no aprendizado?</label><br>
+                    <input type="radio" name="p2" value="Sim" required> Sim
+                    <input type="radio" name="p2" value="Nao"> Não<br><br>
 
-                    <input type="password" placeholder="Tem o HÁBITO DE AGITAR AS MÃOS." name="agitarMaos"/>
-                    <input type="checkbox" onclick="DesabilitarPaci() " name="agitarSim"/>
-                    <input type="checkbox" onclick="DesabilitarMedi() " name="agitarN"/><br>
+                    <label>3. Possui déficit de atenção com ou sem hiperatividade?</label><br>
+                    <input type="radio" name="p3" value="Sim" required> Sim
+                    <input type="radio" name="p3" value="Nao"> Não<br><br>
 
-                    <input type="password" placeholder="Confirmar senha" name="senhaconfi"/>
-                    <input type="checkbox" onclick="DesabilitarPaci() " name="agitarSim"/>
-                    <input type="checkbox" onclick="DesabilitarMedi() " name="agitarN"/> <br>
+                    <label>4. Houve atraso para começar a caminhar/engatinhar?</label><br>
+                    <input type="radio" name="p4" value="Sim" required> Sim
+                    <input type="radio" name="p4" value="Nao"> Não<br><br>
 
-                    <input type="checkbox" onclick="Salvar() " name="Salvar"/> <br>
+                    <label>5. Houve atraso para começar a falar?</label><br>
+                    <input type="radio" name="p5" value="Sim" required> Sim
+                    <input type="radio" name="p5" value="Nao"> Não<br><br>
 
-                    <a href="quiz2.html"><button type="button">Proxima pagina</button></a>                    </center>
+                    <label>6. Ao falar, repete e confunde as informações?</label><br>
+                    <input type="radio" name="p6" value="Sim" required> Sim
+                    <input type="radio" name="p6" value="Nao"> Não<br><br>
+
+                    <label>7. Ao observar as pessoas, imitam seus movimentos?</label><br>
+                    <input type="radio" name="p7" value="Sim" required> Sim
+                    <input type="radio" name="p7" value="Nao"> Não<br><br>
+
+                    <a href="quiz2.html"><button type="button">Proxima pagina</button></a>                   
+                </center>
                 </form>
             </div>
         </div>
