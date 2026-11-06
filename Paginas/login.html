@@ -22,14 +22,14 @@
             <div class="form">
                 <form>
                     <center>
-                    <input type="checkbox" onclick="DesabilitarPaci() " name="medico"/>
-                    <input type="checkbox" onclick="DesabilitarMedi() " name="paciente"/>  
-                    <p>Médico|Paciente</p>
-                    <input type="number" placeholder="CPF" name="cpf"/> <br>
-                    <input type="password" placeholder="Senha" name="senha"/><br>
-                    <a href="Quiz.html">
-                        <button type="button" onclick="entrar()">Entrar</button> 
-                    </a>
+                    <label>Selecione o perfil:</label><br>
+                    <input type="radio" name="perfil" value="Medico" required> Medico
+                    <input type="radio" name="perfil" value="Paciente"> Paciente<br><br>
+
+                    <input type="email" id="emailLogin" placeholder="Email" name="Email" required /> <br>
+                    <input type="password" id="senhaLogin" placeholder="Senha" name="senha" required /><br>
+                    <button type="button" onclick="entrar1()">Entrar</button> 
+                    
                     
                     </center>
                 </form>

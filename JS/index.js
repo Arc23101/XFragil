@@ -1,3 +1,61 @@
+function entrar1() {                window.location.href = "TelaPaci.html";
+}
+
+function entrar() {
+    const perfilEl = document.querySelector('input[name="perfil"]:checked');
+    const inputEmail = document.getElementById('emailLogin');
+    const inputSenha = document.getElementById('senhaLogin');
+
+    // Valida se os elementos existem na página atual
+    if (!perfilEl) {
+        alert("Por favor, selecione se você é Médico ou Paciente.");
+        return;
+    }
+    if (!inputEmail || !inputSenha) {
+        alert("Erro: Campos de login não encontrados nesta página.");
+        return;
+    }
+
+    const email = inputEmail.value;
+    const senha = inputSenha.value;
+
+    if (!email || !senha) {
+        alert("Por favor, preencha o e-mail e a senha.");
+        return;
+    }
+
+    const dadosLogin = {
+        perfil: perfilEl.value,
+        email: email,
+        senha: senha
+    };
+
+    fetch('../PHP/login.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosLogin)
+    })
+    .then(response => response.json())
+    .then(resultado => {
+        if (resultado.status === "sucesso") {
+            alert("Login realizado com sucesso!");
+            if (resultado.perfil === "Medico") {
+                window.location.href = "tela_medico.html";
+            } else {
+                window.location.href = "Quiz.html";
+            }
+        } else {
+            alert("Erro no login: " + resultado.mensagem);
+        }
+    })
+    .catch(erro => {
+        console.error('Erro na requisição:', erro);
+        alert("Erro ao conectar com o servidor.");
+    });
+}
+
 function executarRestauracao() {
     const dadosSalvos = JSON.parse(localStorage.getItem('pacienteQuiz'));
     if (!dadosSalvos) return;

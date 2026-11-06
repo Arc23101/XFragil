@@ -1,55 +1,86 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <script src="../JS/index.js" defer></script>    
     <meta charset="UTF-8">
+    <script src="../JS/index.js" defer></script>
     <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/index.css"></head>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Síndrome do X Frágil - Quiz (Parte 2)</title>
+</head>
 <body>
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
                 <a href="../index.html">
-                <h2>Sindrome do X Fragil</h2>
+                    <h2>Síndrome do X Frágil</h2>
                 </a>
-            </div>
-            
             </div>
         </div>
         <div class="introducao">
             <div class="quiz">
                 <form id="formQuiz2">
-                <center>
-                    <label>8. Tem dificuldade em manter o olhar ao falar com alguém?</label><br>
-                        <input type="radio" name="p8" value="Sim" required> Sim
-                        <input type="radio" name="p8" value="Nao"> Não<br><br>
+                    <center>
+                        <label>8. Tem dificuldade em manter o olhar ao falar com alguém (evita contato visual)?</label><br>
+                        <input type="radio" name="evita_contato_visual" value="Sim" required> Sim
+                        <input type="radio" name="evita_contato_visual" value="Nao"> Não<br><br>
 
-                        <label>9. Possui face alongada e mandíbula proeminente?</label><br>
+                        <label>9. Evita contato físico?</label><br>
+                        <input type="radio" name="evita_contato_fisico" value="Sim" required> Sim
+                        <input type="radio" name="evita_contato_fisico" value="Nao"> Não<br><br>
+
+                        <label>10. Possui face alongada e mandíbula proeminente?</label><br>
                         <input type="radio" name="p9" value="Sim" required> Sim
                         <input type="radio" name="p9" value="Nao"> Não<br><br>
 
-                        <label>10. Apresenta orelhas grandes e em forma de abano?</label><br>
+                        <label>11. Apresenta orelhas grandes e em forma de abano?</label><br>
                         <input type="radio" name="p10" value="Sim" required> Sim
                         <input type="radio" name="p10" value="Nao"> Não<br><br>
 
-                        <label>11. Possui testículos de tamanho maior que o normal (macroorquidismo)?</label><br>
-                        <input type="radio" name="p11" value="Sim" required> Sim
-                        <input type="radio" name="p11" value="Nao"> Não<br><br>
-
-                        <label>12. Suas articulações são mais flexíveis que o normal (hiperextensibilidade)?</label><br>
+                        <label>12. Apresenta pele macia/aveludada?</label><br>
                         <input type="radio" name="p12" value="Sim" required> Sim
                         <input type="radio" name="p12" value="Nao"> Não<br><br>
 
-                        <label>13. Tem o hábito de morder as mãos (a ponto de causar ferimentos)?</label><br>
+                        <label>13. Apresenta articulações flexíveis?</label><br>
                         <input type="radio" name="p13" value="Sim" required> Sim
                         <input type="radio" name="p13" value="Nao"> Não<br><br>
 
-                        <label>14. Tem o hábito de agitar as mãos?</label><br>
+                        <label>14. Possui insônia ou ansiedade?</label><br>
                         <input type="radio" name="p14" value="Sim" required> Sim
                         <input type="radio" name="p14" value="Nao"> Não<br><br>
 
+                        <label>15. Apresenta descoordenação motora?</label><br>
+                        <input type="radio" name="p15" value="Sim" required> Sim
+                        <input type="radio" name="p15" value="Nao"> Não<br><br>
+
+                        <label>16. Possui testículos de tamanho maior que o normal (macroorquidismo)?</label><br>
+                        <input type="radio" name="p16" value="Sim" required> Sim
+                        <input type="radio" name="p16" value="Nao"> Não<br><br>
+
+                        <label>17. Apresenta comportamentos de hiperatividade ou agressividade?</label><br>
+                        <input type="radio" name="agressividade" value="Sim" required> Sim
+                        <input type="radio" name="agressividade" value="Nao"> Não<br><br>
+
+                        <label>18. Realiza movimentos repetitivos (como agitar as mãos)?</label><br>
+                        <input type="radio" name="movimentos_repetitivos" value="Sim" required> Sim
+                        <input type="radio" name="movimentos_repetitivos" value="Nao"> Não<br><br>
+
+                        <label>19. Tem o hábito de morder as mãos (a ponto de causar ferimentos)?</label><br>
+                        <input type="radio" name="habito_morder_maos" value="Sim" required> Sim
+                        <input type="radio" name="habito_morder_maos" value="Nao"> Não<br><br>
+
+                        <label>20. Já fez algum exame de DNA que deu positivo para alguma mutação? (colocar nas observações se sim)</label><br>
+                        <input type="radio" name="p20" value="Sim" required> Sim
+                        <input type="radio" name="p20" value="Nao"> Não<br><br>
+
+                        <label>21. Existem casos de X frágil na família?</label><br>
+                        <input type="radio" name="p21" value="Sim" required> Sim
+                        <input type="radio" name="p21" value="Nao"> Não<br><br>
+
+                        <input type="text" placeholder="Observações adicionais" name="observacoes" /><br><br>
+
                         <button type="button" onclick="salvarPagina2EVoltar()">Voltar</button>
-                        <button type="button" onclick="finalizarQuiz()">Finalizar e Enviar</button>                
-                </center>
+                        <button type="button" onclick="finalizarQuiz()">Finalizar e Enviar</button>            
+                    </center>
                 </form>
             </div>
         </div>

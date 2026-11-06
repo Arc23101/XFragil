@@ -1,61 +1,68 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <script src="../JS/index.js" defer></script>
     <meta charset="UTF-8">
+    <script src="../JS/index.js" defer></script>
     <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/index.css"></head>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Síndrome do X Frágil - Quiz (Parte 1)</title>
+</head>
 <body>
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
                 <a href="../index.html">
-                <h2>Sindrome do X Fragil</h2>
+                    <h2>Síndrome do X Frágil</h2>
                 </a>
-            </div>
-            
             </div>
         </div>
         <div class="introducao">
             <div class="quiz">
                 <form id="formQuiz1">
-                <center>
-                    <label>Nome do paciente:</label><br>
-                    <input type="text" id="nomeP" required /><br><br>
-                    
-                    <label>Sexo do paciente:</label><br>
-                    <input type="radio" name="sexo" value="Masculino" required> Masculino
-                    <input type="radio" name="sexo" value="Feminino"> Feminino<br><br>
+                    <center>
+                        <label>Nome do paciente:</label><br>
+                        <input type="text" id="nomeP" name="NomeP" placeholder="Nome completo do paciente" required /><br><br>
+                        
+                        <label>Data de nascimento:</label><br>
+                        <input type="date" name="dataNasci" required /><br><br>
+                        
+                        <label>Etnia:</label><br>
+                        <input type="text" name="etinia" placeholder="Etnia" /><br><br>
 
-                    <label>1. Há deficiência intelectual na família sem diagnóstico preciso?</label><br>
-                    <input type="radio" name="p1" value="Sim" required> Sim
-                    <input type="radio" name="p1" value="Nao"> Não<br><br>
+                        <label>Sexo do paciente:</label><br>
+                        <input type="radio" name="sexo" value="Masculino" required> Masculino
+                        <input type="radio" name="sexo" value="Feminino"> Feminino<br><br>
 
-                    <label>2. Apresenta deficiência intelectual ou dificuldades no aprendizado?</label><br>
-                    <input type="radio" name="p2" value="Sim" required> Sim
-                    <input type="radio" name="p2" value="Nao"> Não<br><br>
+                        <label>1. Há deficiência intelectual na família sem diagnóstico preciso?</label><br>
+                        <input type="radio" name="p1" value="Sim" required> Sim
+                        <input type="radio" name="p1" value="Nao"> Não<br><br>
+                        
+                        <label>2. Apresenta deficiência intelectual ou dificuldades no aprendizado?</label><br>
+                        <input type="radio" name="dificuldade_aprendizado" value="Sim" required> Sim
+                        <input type="radio" name="dificuldade_aprendizado" value="Nao"> Não<br><br>
 
-                    <label>3. Possui déficit de atenção com ou sem hiperatividade?</label><br>
-                    <input type="radio" name="p3" value="Sim" required> Sim
-                    <input type="radio" name="p3" value="Nao"> Não<br><br>
+                        <label>3. Possui déficit de atenção com ou sem hiperatividade?</label><br>
+                        <input type="radio" name="deficit_atencao" value="Sim" required> Sim
+                        <input type="radio" name="deficit_atencao" value="Nao"> Não<br><br>
 
-                    <label>4. Houve atraso para começar a caminhar/engatinhar?</label><br>
-                    <input type="radio" name="p4" value="Sim" required> Sim
-                    <input type="radio" name="p4" value="Nao"> Não<br><br>
+                        <label>4. Houve atraso para começar a caminhar/engatinhar?</label><br>
+                        <input type="radio" name="p4" value="Sim" required> Sim
+                        <input type="radio" name="p4" value="Nao"> Não<br><br>
 
-                    <label>5. Houve atraso para começar a falar?</label><br>
-                    <input type="radio" name="p5" value="Sim" required> Sim
-                    <input type="radio" name="p5" value="Nao"> Não<br><br>
+                        <label>5. Houve atraso para começar a falar (demorou a falar)?</label><br>
+                        <input type="radio" name="demorou_falar" value="Sim" required> Sim
+                        <input type="radio" name="demorou_falar" value="Nao"> Não<br><br>
 
-                    <label>6. Ao falar, repete e confunde as informações?</label><br>
-                    <input type="radio" name="p6" value="Sim" required> Sim
-                    <input type="radio" name="p6" value="Nao"> Não<br><br>
+                        <label>6. Ao falar, repete e confunde as informações (fala repetitiva)?</label><br>
+                        <input type="radio" name="fala_repetitiva" value="Sim" required> Sim
+                        <input type="radio" name="fala_repetitiva" value="Nao"> Não<br><br>
 
-                    <label>7. Ao observar as pessoas, imitam seus movimentos?</label><br>
-                    <input type="radio" name="p7" value="Sim" required> Sim
-                    <input type="radio" name="p7" value="Nao"> Não<br><br>
+                        <label>7. Ao observar as pessoas, imitam seus movimentos?</label><br>
+                        <input type="radio" name="p7" value="Sim" required> Sim
+                        <input type="radio" name="p7" value="Nao"> Não<br><br>
 
-                    <a href="quiz2.html"><button type="button">Proxima pagina</button></a>                   
-                </center>
+                        <a href="quiz2.html"><button type="button">Próxima página</button></a>                 
+                    </center>
                 </form>
             </div>
         </div>
