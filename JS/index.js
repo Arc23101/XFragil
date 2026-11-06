@@ -1,4 +1,5 @@
 function entrar1() {                window.location.href = "TelaPaci.html";
+}function entrar2() {                window.location.href = "TelaMed.html";
 }
 
 function entrar() {
@@ -6,7 +7,6 @@ function entrar() {
     const inputEmail = document.getElementById('emailLogin');
     const inputSenha = document.getElementById('senhaLogin');
 
-    // Valida se os elementos existem na página atual
     if (!perfilEl) {
         alert("Por favor, selecione se você é Médico ou Paciente.");
         return;
@@ -169,4 +169,6 @@ function finalizarQuiz() {
         }
     })
     .catch(erro => console.error('Erro:', erro));
+
+    window.location.href = "TelaPaci.html";
 }

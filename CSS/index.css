@@ -17,11 +17,11 @@
 }
 .topPad{
     display: flex;
-    height: 50px;
+    height: 10%;
     width: 100%;
 }
 .introducao{
-    height: 80%;
+    height: 90%;
     width: 100%;
     background-color: rgb(123, 124, 126);
 
@@ -29,4 +29,17 @@
 .texto1{
     height:80%;
     width:80% ;
+}
+.buttonPaci{
+    height: 10%;
+    width: 100%;
+}
+.DadosPaci{
+    display: flex;
+    height: 80% ;
+    width: 100%;
+}
+.tabela{
+    height: 100%;
+    width: 50%;
 }
