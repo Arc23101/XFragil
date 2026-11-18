@@ -24,10 +24,10 @@
                         <input type="text" id="nomeP" name="NomeP" placeholder="Nome completo do paciente" required /><br><br>
                         
                         <label>Data de nascimento:</label><br>
-                        <input type="date" name="dataNasci" required /><br><br>
+                        <input type="date" id="dataNasci" name="dataNasci" required /><br><br>
                         
                         <label>Etnia:</label><br>
-                        <input type="text" name="etinia" placeholder="Etnia" /><br><br>
+                        <input type="text" id="etinia" name="etinia" placeholder="Etnia" /><br><br>
 
                         <label>Sexo do paciente:</label><br>
                         <input type="radio" name="sexo" value="Masculino" required> Masculino
@@ -61,7 +61,8 @@
                         <input type="radio" name="p7" value="Sim" required> Sim
                         <input type="radio" name="p7" value="Nao"> Não<br><br>
 
-                        <a href="quiz2.html"><button type="button">Próxima página</button></a>                 
+                        <!-- Botão alterado para chamar a função JavaScript que valida e salva antes de avançar -->
+                        <button type="button" onclick="avancarQuiz1()">Próxima página</button>                 
                     </center>
                 </form>
             </div>

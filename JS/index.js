@@ -257,7 +257,7 @@ function alterarDado(campo) {
         valor: novoValor.trim()
     };
 
-    fetch('../PHP/atualizar_cadastro.php', {
+    fetch('../php/atualizar_cadastra.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -334,6 +334,192 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+function gravar() {
+    const nome = document.getElementById('regNome').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const telefone = document.getElementById('regTelefone').value.trim();
+    const senha = document.getElementById('regSenha').value;
+    const senhaConf = document.getElementById('regSenhaConf').value;
+
+    if (!nome || !email || !telefone || !senha || !senhaConf) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    if (senha !== senhaConf) {
+        alert("As senhas não coincidem!");
+        return;
+    }
+
+    const dadosRegistro = {
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        senha: senha
+    };
+
+    fetch('../PHP/registrar_usuario.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosRegistro)
+    })
+    .then(response => response.json())
+    .then(resultado => {
+        if (resultado.status === "sucesso") {
+            alert("Cadastro realizado com sucesso! Faça login para continuar.");
+            window.location.href = "login.html";
+        } else {
+            alert("Erro ao cadastrar: " + resultado.mensagem);
+        }
+    })
+    .catch(erro => {
+        console.error('Erro na requisição:', erro);
+        alert("Erro ao conectar com o servidor.");
+    });
+}
+function avancarQuiz1() {
+    // Validação básica dos campos de texto obrigatórios da Parte 1
+    const nomeP = document.getElementById('nomeP').value.trim();
+    const dataNasci = document.getElementById('dataNasci').value;
+    const sexoSelected = document.querySelector('input[name="sexo"]:checked');
+
+    if (!nomeP || !dataNasci || !sexoSelected) {
+        alert("Por favor, preencha o Nome, a Data de Nascimento e o Sexo do paciente antes de continuar.");
+        return;
+    }
+
+    // Recupera dados existentes ou inicia um novo objeto
+    let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
+
+    // Salva os campos cadastrais
+    dadosGerais['NomeP'] = nomeP;
+    dadosGerais['dataNasci'] = dataNasci;
+    dadosGerais['etinia'] = document.getElementById('etinia').value.trim();
+    dadosGerais['sexo'] = sexoSelected.value;
+
+    // Salva os radios das perguntas de 1 a 7 dinamicamente pelos names corretos do seu HTML
+    const nomesCampos = ['p1', 'dificuldade_aprendizado', 'deficit_atencao', 'p4', 'demorou_falar', 'fala_repetitiva', 'p7'];
+    
+    for (let campo of nomesCampos) {
+        const selecionado = document.querySelector(`input[name="${campo}"]:checked`);
+        if (selecionado) {
+            dadosGerais[campo] = selecionado.value;
+        }
+    }
+
+    // Grava tudo no localStorage e vai para o quiz 2
+    localStorage.setItem('dadosQuizXFragil', JSON.stringify(dadosGerais));
+    window.location.href = 'quiz2.html';
+}
+
+function enviarQuizFinal() {
+    let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
+
+    // Captura as respostas do Quiz 2
+    for (let i = 8; i <= 14; i++) { // Supondo que o Quiz 2 vá da 8 à 14
+        const selecionada = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selecionada) {
+            dadosGerais[`q${i}`] = selecionada.value;
+        }
+    }
+
+    // Envia o objeto unificado via fetch para o PHP
+    fetch('../PHP/salvar.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosGerais)
+    })
+    .then(response => response.json())
+    .then(resultado => {
+        if (resultado.status === "sucesso") {
+            alert("Quiz salvo com sucesso!");
+            localStorage.removeItem('dadosQuizXFragil'); // Limpa após salvar
+            window.location.href = "PaciVisaoPaci.html";
+        } else {
+            alert("Atenção: " + resultado.mensagem); // Aqui mostrará exatamente qual questão está faltando
+        }
+    })
+    .catch(erro => console.error('Erro:', erro));
+}
+
+
+// Salva temporariamente os dados do Quiz 2 e volta para a página 1
+function voltarQuiz1() {
+    let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
+
+    const nomesCamposQuiz2 = [
+        'evita_contato_visual', 'evita_contato_fisico', 'p9', 'p10', 'p12', 
+        'p13', 'p14', 'p15', 'p16', 'agressividade', 'movimentos_repetitivos', 
+        'habito_morder_maos', 'p20', 'p21'
+    ];
+
+    for (let campo of nomesCamposQuiz2) {
+        const selecionado = document.querySelector(`input[name="${campo}"]:checked`);
+        if (selecionado) {
+            dadosGerais[campo] = selecionado.value;
+        }
+    }
+
+    const obs = document.getElementById('observacoes');
+    if (obs) {
+        dadosGerais['observacoes'] = obs.value;
+    }
+
+    localStorage.setItem('dadosQuizXFragil', JSON.stringify(dadosGerais));
+    window.location.href = 'quiz1.html';
+}
+
+// Junta todas as respostas (Parte 1 + Parte 2) e envia para o PHP salvar no banco
+function finalizarQuiz() {
+    let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
+
+    // Captura os dados da Parte 2 antes de enviar
+    const nomesCamposQuiz2 = [
+        'evita_contato_visual', 'evita_contato_fisico', 'p9', 'p10', 'p12', 
+        'p13', 'p14', 'p15', 'p16', 'agressividade', 'movimentos_repetitivos', 
+        'habito_morder_maos', 'p20', 'p21'
+    ];
+
+    for (let campo of nomesCamposQuiz2) {
+        const selecionado = document.querySelector(`input[name="${campo}"]:checked`);
+        if (selecionado) {
+            dadosGerais[campo] = selecionado.value;
+        }
+    }
+
+    const obs = document.getElementById('observacoes');
+    if (obs) {
+        dadosGerais['observacoes'] = obs.value;
+    }
+
+    // Envia o objeto unificado via fetch para o PHP
+    fetch('../php/salvar.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosGerais)
+    })
+    .then(response => response.json())
+    .then(resultado => {
+        if (resultado.status === "sucesso") {
+            alert("Quiz salvo com sucesso!");
+            localStorage.removeItem('dadosQuizXFragil'); // Limpa o rascunho após salvar
+            window.location.href = "PaciVisaoPaci.html"; // Redireciona para a visão do paciente
+        } else {
+            alert("Atenção: " + resultado.mensagem);
+        }
+    })
+    .catch(erro => {
+        console.error('Erro na requisição:', erro);
+        alert("Erro ao conectar com o servidor.");
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const selectFiltro = document.getElementById('filtro-pacientes');

@@ -19,18 +19,17 @@
             </div>
         </div>
         <div class="introducao">
-            <div class="form">
-                <form>
-                    <center>
-                    <input type="text" placeholder="Nome completo" name="nomeU"/> <br>
-                    <input type="text" placeholder="Email" name="Email"/> <br>
-                    <input type="number" placeholder="Telefone" name="telefone"/> <br>
-                    <input type="password" placeholder="Senha" name="senha"/><br>
-                    <input type="password" placeholder="Confirmar senha" name="senhaconfi"/> <br>
-                    <button type="button" onclick="gravar()">Gravar</button> 
-                    </center>
-                </form>
-            </div>
+            <form id="formRegistro">
+                <center>
+                    <input type="text" id="regNome" placeholder="Nome completo" name="nomeU" required /><br><br>
+                    <input type="email" id="regEmail" placeholder="E-mail" name="Email" required /><br><br>
+                    <input type="text" id="regTelefone" placeholder="Telefone" name="telefone" required /><br><br>
+                    <input type="password" id="regSenha" placeholder="Senha" name="senha" required /><br><br>
+                    <input type="password" id="regSenhaConf" placeholder="Confirmar senha" name="senhaconfi" required /><br><br>
+                    
+                    <button type="button" onclick="gravar()">Gravar</button>
+                </center>
+            </form>
         </div>
     </div>
 </body>

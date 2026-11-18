@@ -19,7 +19,6 @@
         <div class="introducao">
             <div class="quiz">
                 <form id="formQuiz2">
-                    /arrumar os names
                     <center>
                         <label>8. Tem dificuldade em manter o olhar ao falar com alguém (evita contato visual)?</label><br>
                         <input type="radio" name="evita_contato_visual" value="Sim" required> Sim
@@ -77,9 +76,10 @@
                         <input type="radio" name="p21" value="Sim" required> Sim
                         <input type="radio" name="p21" value="Nao"> Não<br><br>
 
-                        <input type="text" placeholder="Observações adicionais" name="observacoes" /><br><br>
+                        <input type="text" id="observacoes" placeholder="Observações adicionais" name="observacoes" /><br><br>
 
-                        <button type="button" onclick="salvarPagina2EVoltar()">Voltar</button>
+                        <!-- Botões atualizados para chamar as funções JS -->
+                        <button type="button" onclick="voltarQuiz1()">Voltar</button>
                         <button type="button" onclick="finalizarQuiz()">Finalizar e Enviar</button>            
                     </center>
                 </form>
