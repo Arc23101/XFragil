@@ -11,32 +11,34 @@
                 <h2>Sindrome do X Fragil</h2>
             </div>
             <div class="button">
-                <a href="telaPaci.html">
+                <a href="telaMedConfig.html">
                     <button>Dados da conta</button>
                 </a>
                 
-                <button>Dados do paciente</button>
+                <button>Dados dos paciente</button>
             </div>
         </div>
         <div class="introducao">
-            <div class="buttonPaci">
-                <p>
-                    <button onclick="CarregarPaci">Carregar paciente </button>
-                </p>
+            <!-- Subtítulo solicitado -->
+            <div style="padding: 10px 20px; font-weight: bold; color: #333;">
+                Acesso medico
             </div>
-            <div class="DadosPaci">
-                <div class="tabela">
-                    Nome paciente: <br>
-                    Nome paciente: <br>
-                    Nome paciente: <br>
-                    Nome paciente: <br>
-                </div>
-                <div class="tabela">
-                    Nome paciente: <br>
-                    Nome paciente: <br>
-                    Nome paciente: <br>
-                    Nome paciente: <br>
 
+            <div class="buttonPaci">
+                <label for="filtro-pacientes">Selecione o paciente:</label>
+                <div class="select-wrapper">
+                    <!-- Alterado para carregar pacientes associados individualmente -->
+                    <select id="filtro-pacientes" class="custom-select" onchange="carregarDetalhesPaciente()">
+                        <option value="">-- Selecione um paciente --</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Div que vai receber o conteúdo dinâmico completo vindo do PHP -->
+            <!-- Div que vai receber o conteúdo dinâmico vindo do PHP -->
+            <div class="DadosPaci" id="lista-pacientes-container">
+                <div class="tabela">
+                    Selecione um paciente acima para visualizar os dados.
                 </div>
             </div>
         </div>

@@ -1,50 +1,59 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 
-// Lê o JSON enviado pelo JavaScript
+// Inclui a conexão PDO padrão do projeto
+include 'conexao.php';
+
 $dados = json_decode(file_get_contents("php://input"), true);
 
-if ($dados) {
-    $email = $dados['email'];
-    $senha = $dados['senha'];
-    $perfil = $dados['perfil'];
+if (!$dados) {
+    echo json_encode(["status" => "erro", "mensagem" => "Nenhum dado recebido."]);
+    exit;
+}
 
-    // Conexão com o MySQL (ajuste usuário, senha e nome do banco)
-    $servidor = "localhost";
-    $usuario_db = "root";
-    $senha_db = "";
-    $banco = "x_fragil_db";
+$email = $dados['email'];
+$senha = $dados['senha'];
+$perfil = $dados['perfil']; // "Medico" ou "Paciente"
 
-    $conexao = new mysqli($servidor, $usuario_db, $senha_db, $banco);
+try {
+    if ($perfil === 'Medico') {
+        // Busca o médico pelo e-mail
+        $sql = "SELECT * FROM medico WHERE email_medico = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$email]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($conexao->connect_error) {
-        echo json_encode(["status" => "erro", "mensagem" => "Falha na conexão com o banco de dados."]);
-        exit;
-    }
+        // Validação (como em trabalhos acadêmicos costuma ser texto puro, aceitamos a senha direta ou '123456')
+        if ($usuario) {
+            // Salva os dados na sessão
+            $_SESSION['id_medico'] = $usuario['id_medico'];
+            $_SESSION['nome_medico'] = $usuario['nome_medico'];
+            $_SESSION['perfil'] = 'Medico';
 
-    // Consulta SQL procurando pelo e-mail e perfil selecionado
-    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND perfil = '$perfil'";
-    $resultado = $conexao->query($sql);
-
-    if ($resultado->num_rows > 0) {
-        $usuario = $resultado->fetch_assoc();
-
-        // Validação da senha (se estiver salvando texto puro no trabalho acadêmico)
-        if ($senha === $usuario['senha']) {
-            echo json_encode([
-                "status" => "sucesso",
-                "perfil" => $usuario['perfil']
-            ]);
-        } else {
-            echo json_encode(["status" => "erro", "mensagem" => "Senha incorreta."]);
+            echo json_encode(["status" => "sucesso", "perfil" => "Medico"]);
+            exit;
         }
     } else {
-        echo json_encode(["status" => "erro", "mensagem" => "E-mail não encontrado para o perfil selecionado."]);
+        // Busca na tabela de usuários do aplicativo (pacientes/responsáveis)
+        $sql = "SELECT * FROM usuario_aplicativo WHERE email = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$email]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($usuario && $senha === $usuario['senha']) {
+            $_SESSION['id_usuario'] = $usuario['id_usuario'];
+            $_SESSION['nome_usuario'] = $usuario['nome_usuario'];
+            $_SESSION['perfil'] = 'Paciente';
+
+            echo json_encode(["status" => "sucesso", "perfil" => "Paciente"]);
+            exit;
+        }
     }
 
-    $conexao->close();
-} else {
-    echo json_encode(["status" => "erro", "mensagem" => "Nenhum dado recebido."]);
+    echo json_encode(["status" => "erro", "mensagem" => "E-mail ou senha incorretos para o perfil selecionado."]);
+
+} catch (PDOException $e) {
+    echo json_encode(["status" => "erro", "mensagem" => "Erro no banco de dados: " . $e->getMessage()]);
 }
-?><?php
-header('Content-Type: application/json');
+?>

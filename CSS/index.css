@@ -43,3 +43,62 @@
     height: 100%;
     width: 50%;
 }
+
+.buttonPaci {
+    margin-bottom: 20px;
+}
+
+.buttonPaci label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+select.custom-select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    appearance: none; /* Remove a seta padrão */
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+select.custom-select:hover {
+    border-color: #0284c7;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    font-size: 0.8rem;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    pointer-events: none;
+}
+
+.DadosPaci {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tabela {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    min-width: 250px;
+}
