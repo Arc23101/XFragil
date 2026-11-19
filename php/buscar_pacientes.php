@@ -1,19 +1,26 @@
 <?php
 session_start();
 include 'conexao.php';
+require_once 'php_jwt.php';
+
+$usuarioToken = conferirTokenJwt();
+if (!$usuarioToken) {
+    echo '<div class="tabela">Acesso negado: token inválido ou ausente.</div>';
+    exit;
+}
 
 $acao = $_GET['acao'] ?? 'listar';
-$perfil = $_SESSION['perfil'] ?? '';
+$perfil = $usuarioToken['perfil'] ?? $_SESSION['perfil'] ?? '';
 
 try {
     if ($acao === 'listar') {
         if ($perfil === 'Medico') {
-            $id_medico = $_SESSION['id_medico'] ?? 1;
+            $id_medico = $usuarioToken['id'] ?? $_SESSION['id_medico'] ?? 1;
             $sql = "SELECT id_paciente, nome_paciente FROM paciente WHERE id_medico_responsavel = ?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$id_medico]);
         } else {
-            $id_usuario = $_SESSION['id_usuario'] ?? 1;
+            $id_usuario = $usuarioToken['id'] ?? $_SESSION['id_usuario'] ?? 1;
             $sql = "SELECT id_paciente, nome_paciente FROM paciente WHERE id_usuario = ?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$id_usuario]);
@@ -32,12 +39,12 @@ try {
         }
 
         if ($perfil === 'Medico') {
-            $id_medico = $_SESSION['id_medico'] ?? 1;
+            $id_medico = $usuarioToken['id'] ?? $_SESSION['id_medico'] ?? 1;
             $sql = "SELECT * FROM paciente WHERE id_paciente = ? AND id_medico_responsavel = ?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$id_paciente, $id_medico]);
         } else {
-            $id_usuario = $_SESSION['id_usuario'] ?? 1;
+            $id_usuario = $usuarioToken['id'] ?? $_SESSION['id_usuario'] ?? 1;
             $sql = "SELECT * FROM paciente WHERE id_paciente = ? AND id_usuario = ?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$id_paciente, $id_usuario]);

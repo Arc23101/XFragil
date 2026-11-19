@@ -7,8 +7,15 @@ error_reporting(E_ALL);
 header('Content-Type: application/json; charset=utf-8');
 
 include 'conexao.php'; 
+require_once 'php_jwt.php';
 
-$id_usuario = $_SESSION['id_usuario'] ?? 1;
+$usuarioToken = conferirTokenJwt();
+if (!$usuarioToken) {
+    echo json_encode(["status" => "erro", "mensagem" => "Acesso negado: token inválido ou ausente."]);
+    exit;
+}
+
+$id_usuario = $usuarioToken['id'] ?? $_SESSION['id_usuario'] ?? 1;
 
 $json = file_get_contents("php://input");
 $dados = json_decode($json, true);

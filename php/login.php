@@ -3,6 +3,7 @@ session_start();
 header('Content-Type: application/json');
 
 include 'conexao.php';
+require_once 'php_jwt.php';
 
 $dados = json_decode(file_get_contents("php://input"), true);
 
@@ -27,7 +28,9 @@ try {
             $_SESSION['nome_medico'] = $usuario['nome_medico'];
             $_SESSION['perfil'] = 'Medico';
 
-            echo json_encode(["status" => "sucesso", "perfil" => "Medico"]);
+            $token = criarTokenJwt($usuario['id_medico'], $usuario['nome_medico'], $usuario['email_medico'], 'Medico');
+
+            echo json_encode(["status" => "sucesso", "perfil" => "Medico", "token" => $token]);
             exit;
         }
     } else {
@@ -41,7 +44,9 @@ try {
             $_SESSION['nome_usuario'] = $usuario['nome_usuario'];
             $_SESSION['perfil'] = 'Paciente';
 
-            echo json_encode(["status" => "sucesso", "perfil" => "Paciente"]);
+            $token = criarTokenJwt($usuario['id_usuario'], $usuario['nome_usuario'], $usuario['email'], 'Paciente');
+
+            echo json_encode(["status" => "sucesso", "perfil" => "Paciente", "token" => $token]);
             exit;
         }
     }
