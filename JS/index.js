@@ -36,6 +36,9 @@ function entrar() {
     .then(response => response.json())
     .then(resultado => {
         if (resultado.status === "sucesso") {
+            if (resultado.token && typeof salvarTokenJwt === 'function') {
+                salvarTokenJwt(resultado.token);
+            }
             alert("Login realizado com sucesso!");
             if (resultado.perfil === "Medico") {
                 window.location.href = "TelaMed.html"; 
@@ -151,14 +154,17 @@ function finalizarQuiz() {
 
     fetch('../php/salvar.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
+        },
         body: JSON.stringify(dadosPaciente)
     })
     .then(response => response.json())
     .then(resultado => {
         if(resultado.status === "sucesso") {
             alert("Respostas enviadas com sucesso!");
-            localStorage.clear();
+            localStorage.removeItem('pacienteQuiz');
             window.location.href = "PaciVisaoPaci.html";
         } else {
             alert("Erro ao salvar: " + resultado.mensagem);
@@ -175,7 +181,11 @@ function carregarPacientes() {
 
     containerResultados.innerHTML = '<div class="tabela">Carregando pacientes do banco de dados...</div>';
 
-    fetch(`../php/buscar_pacientes.php?filtro=${valorFiltro}`)
+    fetch(`../php/buscar_pacientes.php?filtro=${valorFiltro}`, {
+        headers: {
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
+        }
+    })
         .then(response => response.text())
         .then(dadosHtml => {
             containerResultados.innerHTML = dadosHtml;
@@ -190,7 +200,11 @@ function inicializarTelaMedico() {
     const selectFiltro = document.getElementById('filtro-pacientes');
     if (!selectFiltro) return;
 
-    fetch('../php/buscar_pacientes.php?acao=listar')
+    fetch('../php/buscar_pacientes.php?acao=listar', {
+        headers: {
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
+        }
+    })
         .then(response => response.json())
         .then(pacientes => {
             selectFiltro.innerHTML = '<option value="">-- Selecione um paciente --</option>';
@@ -217,7 +231,11 @@ function carregarDetalhesPaciente() {
 
     containerResultados.innerHTML = '<div class="tabela">A carregar dados do paciente...</div>';
 
-    fetch(`../php/buscar_pacientes.php?acao=detalhes&id=${idPaciente}`)
+    fetch(`../php/buscar_pacientes.php?acao=detalhes&id=${idPaciente}`, {
+        headers: {
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
+        }
+    })
         .then(response => response.text())
         .then(html => {
             containerResultados.innerHTML = html;
@@ -249,7 +267,8 @@ function alterarDado(campo) {
     fetch('../php/atualizar_cadastra.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
         },
         body: JSON.stringify(dadosAtualizacao)
     })
@@ -277,7 +296,11 @@ function inicializarTelaPacienteUser() {
     const selectFiltro = document.getElementById('filtro-pacientes-user');
     if (!selectFiltro) return;
 
-    fetch('../php/buscar_pacientes.php?acao=listar')
+    fetch('../php/buscar_pacientes.php?acao=listar', {
+        headers: {
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
+        }
+    })
         .then(response => response.json())
         .then(pacientes => {
             selectFiltro.innerHTML = '<option value="">-- Selecione um paciente --</option>';
@@ -302,7 +325,11 @@ function carregarDetalhesPacienteUser() {
 
     containerResultados.innerHTML = '<div class="tabela">Carregando dados...</div>';
 
-    fetch(`../php/buscar_pacientes.php?acao=detalhes&id=${idPaciente}`)
+    fetch(`../php/buscar_pacientes.php?acao=detalhes&id=${idPaciente}`, {
+        headers: {
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
+        }
+    })
         .then(response => response.text())
         .then(html => {
             containerResultados.innerHTML = html;
@@ -408,7 +435,8 @@ function enviarQuizFinal() {
     fetch('../PHP/salvar.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
         },
         body: JSON.stringify(dadosGerais)
     })
@@ -475,7 +503,8 @@ function finalizarQuiz() {
     fetch('../php/salvar.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + (typeof pegarTokenJwt === 'function' ? pegarTokenJwt() : '')
         },
         body: JSON.stringify(dadosGerais)
     })

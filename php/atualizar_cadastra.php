@@ -2,9 +2,11 @@
 session_start();
 header('Content-Type: application/json');
 include 'conexao.php';
+require_once 'php_jwt.php';
 
-if (!isset($_SESSION['perfil'])) {
-    echo json_encode(["status" => "erro", "mensagem" => "Usuário não autenticado."]);
+$usuarioToken = conferirTokenJwt();
+if (!$usuarioToken) {
+    echo json_encode(["status" => "erro", "mensagem" => "Usuário não autenticado: token inválido ou ausente."]);
     exit;
 }
 
@@ -16,11 +18,11 @@ if (!$dados) {
 
 $campo = $dados['campo']; 
 $valor = $dados['valor'];
-$perfil = $_SESSION['perfil']; 
+$perfil = $usuarioToken['perfil'] ?? $_SESSION['perfil'] ?? ''; 
 
 try {
     if ($perfil === 'Medico') {
-        $id_medico = $_SESSION['id_medico'];
+        $id_medico = $usuarioToken['id'] ?? $_SESSION['id_medico'];
 
         if ($campo === 'email') {
             $sql = "UPDATE medico SET email_medico = ? WHERE id_medico = ?";
@@ -37,7 +39,7 @@ try {
         $stmt->execute([$valor, $id_medico]);
 
     } else {
-        $id_usuario = $_SESSION['id_usuario'];
+        $id_usuario = $usuarioToken['id'] ?? $_SESSION['id_usuario'];
 
         if ($campo === 'email') {
             $sql = "UPDATE usuario_aplicativo SET email = ? WHERE id_usuario = ?";
