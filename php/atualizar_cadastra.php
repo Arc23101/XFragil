@@ -3,7 +3,6 @@ session_start();
 header('Content-Type: application/json');
 include 'conexao.php';
 
-// Verifica se há alguém logado
 if (!isset($_SESSION['perfil'])) {
     echo json_encode(["status" => "erro", "mensagem" => "Usuário não autenticado."]);
     exit;
@@ -15,9 +14,9 @@ if (!$dados) {
     exit;
 }
 
-$campo = $dados['campo']; // 'email', 'telefone', ou 'senha'
+$campo = $dados['campo']; 
 $valor = $dados['valor'];
-$perfil = $_SESSION['perfil']; // 'Medico' ou 'Paciente'
+$perfil = $_SESSION['perfil']; 
 
 try {
     if ($perfil === 'Medico') {
@@ -26,10 +25,8 @@ try {
         if ($campo === 'email') {
             $sql = "UPDATE medico SET email_medico = ? WHERE id_medico = ?";
         } elseif ($campo === 'telefone') {
-            // Se sua tabela médico tiver telefone, adicione aqui, senão ajuste conforme o banco
             $sql = "UPDATE medico SET telefone = ? WHERE id_medico = ?";
         } elseif ($campo === 'senha') {
-            // Nota: Se salvar senha pura ou com hash, ajuste aqui
             $sql = "UPDATE medico SET senha = ? WHERE id_medico = ?"; 
         } else {
             echo json_encode(["status" => "erro", "mensagem" => "Campo inválido."]);
@@ -40,7 +37,6 @@ try {
         $stmt->execute([$valor, $id_medico]);
 
     } else {
-        // Perfil Paciente / Usuário do Aplicativo
         $id_usuario = $_SESSION['id_usuario'];
 
         if ($campo === 'email') {

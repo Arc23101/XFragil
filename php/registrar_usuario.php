@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include 'conexao.php'; // Usa o seu arquivo de conexão PDO
+include 'conexao.php'; 
 
 $dados = json_decode(file_get_contents("php://input"), true);
 
@@ -12,10 +12,9 @@ if (!$dados) {
 $nome = $dados['nome'];
 $email = $dados['email'];
 $telefone = $dados['telefone'];
-$senha = $dados['senha']; // Em sistemas acadêmicos simples, salva direto. (Se quiser usar hash, pode usar password_hash)
+$senha = $dados['senha']; 
 
 try {
-    // Verifica se o e-mail já está cadastrado
     $sqlVerifica = "SELECT * FROM usuario_aplicativo WHERE email = ?";
     $stmtVerifica = $pdo->prepare($sqlVerifica);
     $stmtVerifica->execute([$email]);
@@ -25,7 +24,6 @@ try {
         exit;
     }
 
-    // Insere o novo usuário na tabela usuario_aplicativo
     $sql = "INSERT INTO usuario_aplicativo (nome_usuario, email, senha, telefone) VALUES (?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$nome, $email, $senha, $telefone]);

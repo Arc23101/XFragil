@@ -3,67 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <script src="../JS/index.js" defer></script>
-    <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="../CSS/index.css">
     <title>Síndrome do X Frágil - Quiz (Parte 1)</title>
 </head>
-<body>
+<body class="bg-paciente-visao">
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
-                <a href="../index.html">
-                    <h2>Síndrome do X Frágil</h2>
+                <a href="PaciVisaoPaci.html">
+                    <h2>ConectaFX • Questionário (Parte 1 de 2)</h2>
                 </a>
             </div>
         </div>
         <div class="introducao">
             <div class="quiz">
+                <h3 style="color: #0f172a; margin-bottom: 6px;">Dados Iniciais e Desenvolvimento</h3>
+                <p class="form-subtitulo" style="text-align: left;">Preencha as informações básicas do paciente e responda às primeiras perguntas sobre o histórico e comunicação.</p>
+
                 <form id="formQuiz1">
-                    <center>
-                        <label>Nome do paciente:</label><br>
-                        <input type="text" id="nomeP" name="NomeP" placeholder="Nome completo do paciente" required /><br><br>
-                        
-                        <label>Data de nascimento:</label><br>
-                        <input type="date" id="dataNasci" name="dataNasci" required /><br><br>
-                        
-                        <label>Etnia:</label><br>
-                        <input type="text" id="etinia" name="etinia" placeholder="Etnia" /><br><br>
+                    <div class="campo-grupo">
+                        <label for="nomeP">Nome do paciente:</label>
+                        <input type="text" id="nomeP" name="NomeP" placeholder="Nome completo do paciente" required />
+                    </div>
+                    
+                    <div class="campo-grupo">
+                        <label for="dataNasci">Data de nascimento:</label>
+                        <input type="date" id="dataNasci" name="dataNasci" required />
+                    </div>
+                    
+                    <div class="campo-grupo">
+                        <label for="etinia">Etnia:</label>
+                        <input type="text" id="etinia" name="etinia" placeholder="Ex: Branca, Parda, Negra, Amarela, Indígena" />
+                    </div>
 
-                        <label>Sexo do paciente:</label><br>
-                        <input type="radio" name="sexo" value="Masculino" required> Masculino
-                        <input type="radio" name="sexo" value="Feminino"> Feminino<br><br>
+                    <div class="questao-card">
+                        <label>Sexo biológico do paciente:</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="sexo" value="Masculino" required> Masculino</label>
+                            <label><input type="radio" name="sexo" value="Feminino"> Feminino</label>
+                        </div>
+                    </div>
 
-                        <label>1. Há deficiência intelectual na família sem diagnóstico preciso?</label><br>
-                        <input type="radio" name="p1" value="Sim" required> Sim
-                        <input type="radio" name="p1" value="Nao"> Não<br><br>
-                        
-                        <label>2. Apresenta deficiência intelectual ou dificuldades no aprendizado?</label><br>
-                        <input type="radio" name="dificuldade_aprendizado" value="Sim" required> Sim
-                        <input type="radio" name="dificuldade_aprendizado" value="Nao"> Não<br><br>
+                    <div class="questao-card">
+                        <label>1. Há deficiência intelectual na família sem diagnóstico preciso?</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="p1" value="Sim" required> Sim</label>
+                            <label><input type="radio" name="p1" value="Nao"> Não</label>
+                        </div>
+                    </div>
+                    
+                    <div class="questao-card">
+                        <label>2. Apresenta deficiência intelectual ou dificuldades no aprendizado?</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="dificuldade_aprendizado" value="Sim" required> Sim</label>
+                            <label><input type="radio" name="dificuldade_aprendizado" value="Nao"> Não</label>
+                        </div>
+                    </div>
 
-                        <label>3. Possui déficit de atenção com ou sem hiperatividade?</label><br>
-                        <input type="radio" name="deficit_atencao" value="Sim" required> Sim
-                        <input type="radio" name="deficit_atencao" value="Nao"> Não<br><br>
+                    <div class="questao-card">
+                        <label>3. Possui déficit de atenção com ou sem hiperatividade?</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="deficit_atencao" value="Sim" required> Sim</label>
+                            <label><input type="radio" name="deficit_atencao" value="Nao"> Não</label>
+                        </div>
+                    </div>
 
-                        <label>4. Houve atraso para começar a caminhar/engatinhar?</label><br>
-                        <input type="radio" name="p4" value="Sim" required> Sim
-                        <input type="radio" name="p4" value="Nao"> Não<br><br>
+                    <div class="questao-card">
+                        <label>4. Houve atraso para começar a caminhar/engatinhar?</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="p4" value="Sim" required> Sim</label>
+                            <label><input type="radio" name="p4" value="Nao"> Não</label>
+                        </div>
+                    </div>
 
-                        <label>5. Houve atraso para começar a falar (demorou a falar)?</label><br>
-                        <input type="radio" name="demorou_falar" value="Sim" required> Sim
-                        <input type="radio" name="demorou_falar" value="Nao"> Não<br><br>
+                    <div class="questao-card">
+                        <label>5. Houve atraso para começar a falar (demorou a falar)?</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="demorou_falar" value="Sim" required> Sim</label>
+                            <label><input type="radio" name="demorou_falar" value="Nao"> Não</label>
+                        </div>
+                    </div>
 
-                        <label>6. Ao falar, repete e confunde as informações (fala repetitiva)?</label><br>
-                        <input type="radio" name="fala_repetitiva" value="Sim" required> Sim
-                        <input type="radio" name="fala_repetitiva" value="Nao"> Não<br><br>
+                    <div class="questao-card">
+                        <label>6. Ao falar, repete e confunde as informações (fala repetitiva)?</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="fala_repetitiva" value="Sim" required> Sim</label>
+                            <label><input type="radio" name="fala_repetitiva" value="Nao"> Não</label>
+                        </div>
+                    </div>
 
-                        <label>7. Ao observar as pessoas, imitam seus movimentos?</label><br>
-                        <input type="radio" name="p7" value="Sim" required> Sim
-                        <input type="radio" name="p7" value="Nao"> Não<br><br>
+                    <div class="questao-card">
+                        <label>7. Ao observar as pessoas, imita seus movimentos?</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="p7" value="Sim" required> Sim</label>
+                            <label><input type="radio" name="p7" value="Nao"> Não</label>
+                        </div>
+                    </div>
 
-                        <!-- Botão alterado para chamar a função JavaScript que valida e salva antes de avançar -->
-                        <button type="button" onclick="avancarQuiz1()">Próxima página</button>                 
-                    </center>
+                    <div style="display: flex; justify-content: space-between; margin-top: 22px;">
+                        <a href="PaciVisaoPaci.html"><button type="button" class="btn-secundario">Cancelar</button></a>
+                        <button type="button" class="btn-primario" onclick="avancarQuiz1()">Próxima página →</button>
+                    </div>
                 </form>
             </div>
         </div>

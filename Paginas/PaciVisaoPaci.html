@@ -3,43 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <script src="../JS/index.js" defer></script>
-    <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="../CSS/index.css">
     <title>Síndrome do X Frágil - Visão do Paciente</title>
 </head>
-<body>
+<body class="bg-paciente-visao">
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
-                    <h2>Síndrome do X Frágil</h2>
+                <h2>ConectaFX • Área do Paciente</h2>
             </div>
             <div class="button">
-                <a href="telaPaciConfig.html"><button>Dados da conta</button></a>
+                <a href="telaPaciConfig.html">
+                    <button>Dados da conta</button>
+                </a>
+                <a href="../index.html">
+                    <button>Sair</button>
+                </a>
             </div>
         </div>
         <div class="introducao">
-            <!-- Cabeçalho com o subtítulo e o botão para criar novo paciente via Quiz -->
-            <div style="padding: 10px 20px; font-weight: bold; color: #333; display: flex; justify-content: space-between; align-items: center;">
-                <span>Meus Pacientes Cadastrados</span>
+            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <h3 style="color: #0f172a; margin-bottom: 4px;">Meus Pacientes Cadastrados</h3>
+                    <p style="color: #64748b; font-size: 0.9rem;">Acompanhe as avaliações registradas ou inicie um novo questionário.</p>
+                </div>
                 <a href="Quiz.html">
-                    <button type="button" style="padding: 6px 12px; cursor: pointer; background-color: #2563eb; color: white; border: none; border-radius: 4px;">Criar Paciente (Quiz)</button>
+                    <button type="button" class="btn-primario">+ Novo Paciente (Quiz)</button>
                 </a>
             </div>
-            
+
             <div class="buttonPaci">
-                <label for="filtro-pacientes-user">Selecione o paciente:</label>
+                <label for="filtro-pacientes">Selecione o paciente:</label>
                 <div class="select-wrapper">
-                    <!-- Select que carrega apenas os pacientes associados ao usuário logado -->
-                    <select id="filtro-pacientes-user" class="custom-select" onchange="carregarDetalhesPacienteUser()">
+                    <select id="filtro-pacientes" class="custom-select" onchange="carregarDetalhesPaciente()">
                         <option value="">-- Selecione um paciente --</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Div que vai receber o conteúdo dinâmico completo vindo do PHP (tabela de sintomas e observações) -->
-            <div class="DadosPaci" id="lista-pacientes-user-container">
+            <div class="DadosPaci" id="lista-pacientes-container">
                 <div class="tabela">
-                    Selecione um paciente acima para visualizar os dados.
+                    Selecione um paciente acima ou cadastre um novo para visualizar as informações e respostas do questionário.
                 </div>
             </div>
         </div>

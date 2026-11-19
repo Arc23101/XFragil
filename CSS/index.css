@@ -1,86 +1,272 @@
-.principal{
-    height: 500px;
-    width: 400px;
-    background-color: rgb(228, 134, 11);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.button{
-    height: 100%;
-    width: 25%;
-    background-color: rgb(81, 144, 247);
 
-}
-.titulo{
-    height: 100%;
-    width: 75%;
-    background-color: rgb(81, 144, 247);
-
-}
-.topPad{
+body {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    min-height: 100vh;
     display: flex;
-    height: 10%;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
 }
-.introducao{
-    height: 90%;
-    width: 100%;
-    background-color: rgb(123, 124, 126);
 
+body.bg-home, 
+body.bg-login, 
+body.bg-registro {
+    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('img/Xfragil_img1.png') no-repeat center center fixed;
+    background-size: cover;
 }
-.texto1{
-    height:80%;
-    width:80% ;
+
+body.bg-medico, 
+body.bg-medico-config,
+body.bg-paciente-config,
+body.bg-paciente-visao {
+    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('img/Xfragil_img3.webp') no-repeat center center fixed;
+    background-size: cover;
 }
-.buttonPaci{
-    height: 10%;
+
+.principal, .princpal {
     width: 100%;
-}
-.DadosPaci{
+    max-width: 850px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     display: flex;
-    height: 80% ;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.topPad, .TopPad {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    padding: 18px 25px;
+    color: #ffffff;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.titulo a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.titulo h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.button {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button button, .button a button {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.button button:hover {
+    background-color: #ffffff;
+    color: #1d4ed8;
+}
+
+.introducao {
+    padding: 30px 25px;
+    background-color: transparent;
     width: 100%;
 }
-.tabela{
-    height: 100%;
-    width: 50%;
+
+.texto1, .text1 {
+    line-height: 1.65;
+    color: #334155;
+    font-size: 1rem;
+}
+
+.texto1 h3, .text1 h3 {
+    color: #0f172a;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+}
+
+.texto1 p, .text1 p {
+    margin-bottom: 14px;
+}
+
+.destaque-box {
+    background-color: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 15px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 18px;
+    color: #1e3a8a;
+    font-size: 0.95rem;
+}
+
+.form, .quiz {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-subtitulo {
+    color: #64748b;
+    margin-bottom: 22px;
+    font-size: 0.95rem;
+}
+
+.campo-grupo {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.campo-grupo label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #334155;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background-color: #ffffff;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.radio-opcoes {
+    display: flex;
+    gap: 20px;
+    margin-top: 6px;
+}
+
+.radio-opcoes label {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.questao-card {
+    background-color: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.questao-card > label {
+    display: block;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.btn-primario, button[type="button"] {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primario:hover, button[type="button"]:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secundario {
+    background-color: #e2e8f0;
+    color: #334155;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-secundario:hover {
+    background-color: #cbd5e1;
 }
 
 .buttonPaci {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .buttonPaci label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #334155;
 }
 
 .select-wrapper {
     position: relative;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
 }
 
 select.custom-select {
     width: 100%;
     padding: 10px 14px;
-    font-size: 1rem;
-    color: #333;
-    background-color: #fff;
-    border: 2px solid #cbd5e1;
-    border-radius: 6px;
-    appearance: none; /* Remove a seta padrão */
+    font-size: 0.95rem;
+    color: #1e293b;
+    background-color: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    appearance: none;
     cursor: pointer;
     transition: border-color 0.2s;
 }
 
-select.custom-select:hover {
-    border-color: #0284c7;
+select.custom-select:hover,
+select.custom-select:focus {
+    border-color: #2563eb;
+    outline: none;
 }
 
 .select-wrapper::after {
     content: "▼";
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     position: absolute;
     right: 14px;
     top: 50%;
@@ -93,12 +279,15 @@ select.custom-select:hover {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .tabela {
+    flex: 1;
     background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 15px;
-    border-radius: 6px;
-    min-width: 250px;
+    border: 1.5px solid #e2e8f0;
+    padding: 18px 20px;
+    border-radius: 8px;
+    min-width: 260px;
+    line-height: 1.6;
 }

@@ -1,31 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <script src="../JS/index.js"></script>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/index.css"></head>
-<body>
+    <script src="../JS/index.js" defer></script>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Configurações da Conta - Paciente</title>
+</head>
+<body class="bg-medico-config">
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
-                <h2>Sindrome do X Fragil</h2>
+                <h2>ConectaFX • Configurações da Conta</h2>
             </div>
             <div class="button">
-                
-                 <button>Dados da conta</button>
                 <a href="TelaMed.html">
-                    <button>Dados dos paciente</button>
+                    <button>← Voltar aos Pacientes</button>
                 </a>
             </div>
         </div>
         <div class="introducao">
             <div class="text1">
-                <p>
-                    Nome: <br>
-                    Email: <button type="button" onclick="MudarEmail()">Alterar email</button><br>
-                    Telefone: <button type="button" onclick="MudarTelefone()">Alterar telefone</button><br>
-                    Senha: <button type="button" onclick="MudarSenha()">Alterar senha</button><br>
-                </p>
+                <h3>Gerenciar Dados do Usuário</h3>
+                <p style="color: #64748b; font-size: 0.9rem;">Mantenha seus dados de contato e segurança sempre atualizados.</p>
+
+                <div class="tabela" style="margin-top: 15px;">
+                    <div class="config-item">
+                        <span><strong>E-mail cadastrado:</strong></span>
+                        <button type="button" class="btn-pequeno" onclick="MudarEmail()">Alterar e-mail</button>
+                    </div>
+                    <div class="config-item">
+                        <span><strong>Telefone cadastrado:</strong></span>
+                        <button type="button" class="btn-pequeno" onclick="MudarTelefone()">Alterar telefone</button>
+                    </div>
+                    <div class="config-item">
+                        <span><strong>Senha de acesso:</strong></span>
+                        <button type="button" class="btn-pequeno" onclick="MudarSenha()">Alterar senha</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

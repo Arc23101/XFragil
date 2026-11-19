@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
 $dbname = 'conectafx_db';
-$usuario = 'root'; // Altere conforme o seu ambiente
-$senha = 'PUC@1234';     // Altere conforme o seu ambiente
+$usuario = 'root'; 
+$senha = 'PUC@1234';     
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $usuario, $senha);

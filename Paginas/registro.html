@@ -1,35 +1,60 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <script src="../JS/index.js"></script>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/index.css"></head>
-<body>
+    <script src="../JS/index.js" defer></script>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Cadastro - Síndrome do X Frágil</title>
+</head>
+<body class="bg-registro">
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
                 <a href="../index.html">
-                <h2>Sindrome do X Fragil</h2>
+                    <h2>ConectaFX • Síndrome do X Frágil</h2>
                 </a>
             </div>
             <div class="button">
                 <a href="login.html">
-                    <button>Logar</button>
+                    <button>Entrar</button>
                 </a>
             </div>
         </div>
         <div class="introducao">
-            <form id="formRegistro">
-                <center>
-                    <input type="text" id="regNome" placeholder="Nome completo" name="nomeU" required /><br><br>
-                    <input type="email" id="regEmail" placeholder="E-mail" name="Email" required /><br><br>
-                    <input type="text" id="regTelefone" placeholder="Telefone" name="telefone" required /><br><br>
-                    <input type="password" id="regSenha" placeholder="Senha" name="senha" required /><br><br>
-                    <input type="password" id="regSenhaConf" placeholder="Confirmar senha" name="senhaconfi" required /><br><br>
-                    
-                    <button type="button" onclick="gravar()">Gravar</button>
-                </center>
-            </form>
+            <div class="form">
+                <h3 style="text-align: center; margin-bottom: 6px; color: #0f172a;">Criar nova conta</h3>
+                <p class="form-subtitulo" style="text-align: center;">Preencha seus dados abaixo para cadastrar pacientes e acompanhar avaliações.</p>
+                <form id="formRegistro">
+                    <div class="campo-grupo">
+                        <label for="regNome">Nome completo:</label>
+                        <input type="text" id="regNome" placeholder="Seu nome completo" name="nomeU" required />
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="regEmail">E-mail:</label>
+                        <input type="email" id="regEmail" placeholder="exemplo@email.com" name="Email" required />
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="regTelefone">Telefone:</label>
+                        <input type="text" id="regTelefone" placeholder="(00) 00000-0000" name="telefone" required />
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="regSenha">Senha:</label>
+                        <input type="password" id="regSenha" placeholder="Crie uma senha" name="senha" required />
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="regSenhaConf">Confirmar senha:</label>
+                        <input type="password" id="regSenhaConf" placeholder="Repita a senha" name="senhaconfi" required />
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="button" class="btn-primario" onclick="gravar()" style="width: 100%;">Concluir Cadastro</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>

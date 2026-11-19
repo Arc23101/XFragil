@@ -21,7 +21,7 @@ function entrar() {
     }
 
     const dadosLogin = {
-        perfil: perfilEl.value, // "Medico" ou "Paciente"
+        perfil: perfilEl.value, 
         email: email,
         senha: senha
     };
@@ -37,11 +37,10 @@ function entrar() {
     .then(resultado => {
         if (resultado.status === "sucesso") {
             alert("Login realizado com sucesso!");
-            // Redireciona com base no perfil retornado pelo banco
             if (resultado.perfil === "Medico") {
-                window.location.href = "TelaMed.html"; // Nome exato do arquivo
+                window.location.href = "TelaMed.html"; 
             } else {
-                window.location.href = "PaciVisaoPaci.html"; // Ou a tela inicial do paciente
+                window.location.href = "PaciVisaoPaci.html"; 
             }
         } else {
             alert("Erro no login: " + resultado.mensagem);
@@ -150,7 +149,7 @@ function finalizarQuiz() {
         dadosPaciente[`p${i}`] = resp.value;
     }
 
-    fetch('../PHP/salvar.php', {
+    fetch('../php/salvar.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dadosPaciente)
@@ -160,14 +159,13 @@ function finalizarQuiz() {
         if(resultado.status === "sucesso") {
             alert("Respostas enviadas com sucesso!");
             localStorage.clear();
-            window.location.href = "../index.html";
+            window.location.href = "PaciVisaoPaci.html";
         } else {
             alert("Erro ao salvar: " + resultado.mensagem);
         }
     })
     .catch(erro => console.error('Erro:', erro));
 
-    window.location.href = "TelaPaci.html";
 }
 
 function carregarPacientes() {
@@ -175,14 +173,11 @@ function carregarPacientes() {
     const valorFiltro = selectFiltro.value;
     const containerResultados = document.getElementById('lista-pacientes-container');
 
-    // Mensagem temporária de carregamento
     containerResultados.innerHTML = '<div class="tabela">Carregando pacientes do banco de dados...</div>';
 
-    // Requisição assíncrona para o arquivo PHP
     fetch(`../php/buscar_pacientes.php?filtro=${valorFiltro}`)
         .then(response => response.text())
         .then(dadosHtml => {
-            // Atualiza a div com os dados retornados pelo PHP
             containerResultados.innerHTML = dadosHtml;
         })
         .catch(error => {
@@ -191,8 +186,6 @@ function carregarPacientes() {
         });
 }
 
-// Carregar a lista de pacientes do médico ao abrir a tela do médico
-// Função para carregar a lista de pacientes no <select> do médico
 function inicializarTelaMedico() {
     const selectFiltro = document.getElementById('filtro-pacientes');
     if (!selectFiltro) return;
@@ -200,7 +193,6 @@ function inicializarTelaMedico() {
     fetch('../php/buscar_pacientes.php?acao=listar')
         .then(response => response.json())
         .then(pacientes => {
-            // Mantém apenas a opção padrão e limpa o resto
             selectFiltro.innerHTML = '<option value="">-- Selecione um paciente --</option>';
             
             pacientes.forEach(p => {
@@ -213,8 +205,7 @@ function inicializarTelaMedico() {
         .catch(error => console.error('Erro ao carregar lista de pacientes:', error));
 }
 
-// Quando o médico seleciona um paciente específico no dropdown
-// Quando o médico seleciona um paciente específico no dropdown
+
 function carregarDetalhesPaciente() {
     const idPaciente = document.getElementById('filtro-pacientes').value;
     const containerResultados = document.getElementById('lista-pacientes-container');
@@ -237,12 +228,10 @@ function carregarDetalhesPaciente() {
         });
 }
 
-// Executa ao carregar a página do médico
 if (document.getElementById('filtro-pacientes')) {
     document.addEventListener('DOMContentLoaded', inicializarTelaMedico);
 }
 
-// Função genérica para atualizar dados do usuário/médico logado
 function alterarDado(campo) {
     let titulo = "";
     if (campo === 'email') titulo = "Digite o novo e-mail:";
@@ -268,7 +257,7 @@ function alterarDado(campo) {
     .then(resultado => {
         if (resultado.status === "sucesso") {
             alert("Atualizado com sucesso!");
-            location.reload(); // Recarrega a tela para refletir
+            location.reload(); 
         } else {
             alert("Erro ao atualizar: " + resultado.mensagem);
         }
@@ -279,13 +268,11 @@ function alterarDado(campo) {
     });
 }
 
-// Funções chamadas pelos botões nas telas de config
 function MudarEmail() { alterarDado('email'); }
 function MudarTelefone() { alterarDado('telefone'); }
 function MudarSenha() { alterarDado('senha'); }
 
 
-// Carrega os pacientes associados ao usuário logado na tela do paciente
 function inicializarTelaPacienteUser() {
     const selectFiltro = document.getElementById('filtro-pacientes-user');
     if (!selectFiltro) return;
@@ -304,7 +291,6 @@ function inicializarTelaPacienteUser() {
         .catch(error => console.error('Erro ao carregar lista de pacientes do usuário:', error));
 }
 
-// Carrega os detalhes do paciente selecionado pelo usuário
 function carregarDetalhesPacienteUser() {
     const idPaciente = document.getElementById('filtro-pacientes-user').value;
     const containerResultados = document.getElementById('lista-pacientes-user-container');
@@ -327,7 +313,6 @@ function carregarDetalhesPacienteUser() {
         });
 }
 
-// Inicializa automaticamente ao carregar a página do paciente
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('filtro-pacientes-user')) {
         inicializarTelaPacienteUser();
@@ -381,7 +366,6 @@ function gravar() {
     });
 }
 function avancarQuiz1() {
-    // Validação básica dos campos de texto obrigatórios da Parte 1
     const nomeP = document.getElementById('nomeP').value.trim();
     const dataNasci = document.getElementById('dataNasci').value;
     const sexoSelected = document.querySelector('input[name="sexo"]:checked');
@@ -391,16 +375,13 @@ function avancarQuiz1() {
         return;
     }
 
-    // Recupera dados existentes ou inicia um novo objeto
     let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
 
-    // Salva os campos cadastrais
     dadosGerais['NomeP'] = nomeP;
     dadosGerais['dataNasci'] = dataNasci;
     dadosGerais['etinia'] = document.getElementById('etinia').value.trim();
     dadosGerais['sexo'] = sexoSelected.value;
 
-    // Salva os radios das perguntas de 1 a 7 dinamicamente pelos names corretos do seu HTML
     const nomesCampos = ['p1', 'dificuldade_aprendizado', 'deficit_atencao', 'p4', 'demorou_falar', 'fala_repetitiva', 'p7'];
     
     for (let campo of nomesCampos) {
@@ -410,7 +391,6 @@ function avancarQuiz1() {
         }
     }
 
-    // Grava tudo no localStorage e vai para o quiz 2
     localStorage.setItem('dadosQuizXFragil', JSON.stringify(dadosGerais));
     window.location.href = 'quiz2.html';
 }
@@ -418,15 +398,13 @@ function avancarQuiz1() {
 function enviarQuizFinal() {
     let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
 
-    // Captura as respostas do Quiz 2
-    for (let i = 8; i <= 14; i++) { // Supondo que o Quiz 2 vá da 8 à 14
+    for (let i = 8; i <= 14; i++) { 
         const selecionada = document.querySelector(`input[name="q${i}"]:checked`);
         if (selecionada) {
             dadosGerais[`q${i}`] = selecionada.value;
         }
     }
 
-    // Envia o objeto unificado via fetch para o PHP
     fetch('../PHP/salvar.php', {
         method: 'POST',
         headers: {
@@ -438,17 +416,16 @@ function enviarQuizFinal() {
     .then(resultado => {
         if (resultado.status === "sucesso") {
             alert("Quiz salvo com sucesso!");
-            localStorage.removeItem('dadosQuizXFragil'); // Limpa após salvar
+            localStorage.removeItem('dadosQuizXFragil'); 
             window.location.href = "PaciVisaoPaci.html";
         } else {
-            alert("Atenção: " + resultado.mensagem); // Aqui mostrará exatamente qual questão está faltando
+            alert("Atenção: " + resultado.mensagem); 
         }
     })
     .catch(erro => console.error('Erro:', erro));
 }
 
 
-// Salva temporariamente os dados do Quiz 2 e volta para a página 1
 function voltarQuiz1() {
     let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
 
@@ -474,11 +451,9 @@ function voltarQuiz1() {
     window.location.href = 'quiz1.html';
 }
 
-// Junta todas as respostas (Parte 1 + Parte 2) e envia para o PHP salvar no banco
 function finalizarQuiz() {
     let dadosGerais = JSON.parse(localStorage.getItem('dadosQuizXFragil')) || {};
 
-    // Captura os dados da Parte 2 antes de enviar
     const nomesCamposQuiz2 = [
         'evita_contato_visual', 'evita_contato_fisico', 'p9', 'p10', 'p12', 
         'p13', 'p14', 'p15', 'p16', 'agressividade', 'movimentos_repetitivos', 
@@ -497,7 +472,6 @@ function finalizarQuiz() {
         dadosGerais['observacoes'] = obs.value;
     }
 
-    // Envia o objeto unificado via fetch para o PHP
     fetch('../php/salvar.php', {
         method: 'POST',
         headers: {
@@ -509,8 +483,8 @@ function finalizarQuiz() {
     .then(resultado => {
         if (resultado.status === "sucesso") {
             alert("Quiz salvo com sucesso!");
-            localStorage.removeItem('dadosQuizXFragil'); // Limpa o rascunho após salvar
-            window.location.href = "PaciVisaoPaci.html"; // Redireciona para a visão do paciente
+            localStorage.removeItem('dadosQuizXFragil'); 
+            window.location.href = "PaciVisaoPaci.html"; 
         } else {
             alert("Atenção: " + resultado.mensagem);
         }

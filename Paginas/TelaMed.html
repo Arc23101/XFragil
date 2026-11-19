@@ -1,44 +1,44 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <script src="../JS/index.js"></script>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/index.css"></head>
-<body>
+    <script src="../JS/index.js" defer></script>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Síndrome do X Frágil - Visão do Médico</title>
+</head>
+<body class="bg-medico">
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
-                <h2>Sindrome do X Fragil</h2>
+                <h2>ConectaFX • Portal Médico</h2>
             </div>
             <div class="button">
                 <a href="telaMedConfig.html">
                     <button>Dados da conta</button>
                 </a>
-                
-                <button>Dados dos paciente</button>
+                <a href="../index.html">
+                    <button>Sair</button>
+                </a>
             </div>
         </div>
         <div class="introducao">
-            <!-- Subtítulo solicitado -->
-            <div style="padding: 10px 20px; font-weight: bold; color: #333;">
-                Acesso medico
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #0f172a; margin-bottom: 4px;">Acompanhamento Clínico de Pacientes</h3>
+                <p style="color: #64748b; font-size: 0.9rem;">Selecione um paciente vinculado para analisar a pontuação e os indicadores observados.</p>
             </div>
 
             <div class="buttonPaci">
                 <label for="filtro-pacientes">Selecione o paciente:</label>
                 <div class="select-wrapper">
-                    <!-- Alterado para carregar pacientes associados individualmente -->
                     <select id="filtro-pacientes" class="custom-select" onchange="carregarDetalhesPaciente()">
                         <option value="">-- Selecione um paciente --</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Div que vai receber o conteúdo dinâmico completo vindo do PHP -->
-            <!-- Div que vai receber o conteúdo dinâmico vindo do PHP -->
             <div class="DadosPaci" id="lista-pacientes-container">
                 <div class="tabela">
-                    Selecione um paciente acima para visualizar os dados.
+                    Selecione um paciente acima para visualizar os dados clínicos e observações.
                 </div>
             </div>
         </div>

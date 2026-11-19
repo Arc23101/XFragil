@@ -2,7 +2,6 @@
 session_start();
 header('Content-Type: application/json');
 
-// Inclui a conexão PDO padrão do projeto
 include 'conexao.php';
 
 $dados = json_decode(file_get_contents("php://input"), true);
@@ -14,19 +13,16 @@ if (!$dados) {
 
 $email = $dados['email'];
 $senha = $dados['senha'];
-$perfil = $dados['perfil']; // "Medico" ou "Paciente"
+$perfil = $dados['perfil']; 
 
 try {
     if ($perfil === 'Medico') {
-        // Busca o médico pelo e-mail
         $sql = "SELECT * FROM medico WHERE email_medico = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Validação (como em trabalhos acadêmicos costuma ser texto puro, aceitamos a senha direta ou '123456')
         if ($usuario) {
-            // Salva os dados na sessão
             $_SESSION['id_medico'] = $usuario['id_medico'];
             $_SESSION['nome_medico'] = $usuario['nome_medico'];
             $_SESSION['perfil'] = 'Medico';
@@ -35,7 +31,6 @@ try {
             exit;
         }
     } else {
-        // Busca na tabela de usuários do aplicativo (pacientes/responsáveis)
         $sql = "SELECT * FROM usuario_aplicativo WHERE email = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$email]);

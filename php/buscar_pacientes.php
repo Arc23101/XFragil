@@ -13,7 +13,6 @@ try {
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$id_medico]);
         } else {
-            // Perfil Paciente / Usuário do Aplicativo
             $id_usuario = $_SESSION['id_usuario'] ?? 1;
             $sql = "SELECT id_paciente, nome_paciente FROM paciente WHERE id_usuario = ?";
             $stmt = $pdo->prepare($sql);
@@ -32,7 +31,6 @@ try {
             exit;
         }
 
-        // Permite visualizar se for o médico responsável ou o próprio usuário dono do cadastro
         if ($perfil === 'Medico') {
             $id_medico = $_SESSION['id_medico'] ?? 1;
             $sql = "SELECT * FROM paciente WHERE id_paciente = ? AND id_medico_responsavel = ?";
@@ -52,7 +50,6 @@ try {
             exit;
         }
 
-        // Exibe os dados cadastrais, sintomas e observações
         echo '<div class="tabela" style="width: 100%;">';
         echo '<h3>Dados do Paciente</h3>';
         echo '<strong>Nome:</strong> ' . htmlspecialchars($p['nome_paciente']) . '<br>';

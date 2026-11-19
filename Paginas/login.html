@@ -1,15 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <script src="../JS/index.js"></script>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../CSS/biblioteca/fontawesome-free-7.2.0-web/fontawesome-free-7.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/index.css"></head>
-<body>
+    <script src="../JS/index.js" defer></script>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Login - Síndrome do X Frágil</title>
+</head>
+<body class="bg-login">
     <div class="princpal">
         <div class="TopPad">
             <div class="titulo">
                 <a href="../index.html">
-                <h2>Sindrome do X Fragil</h2>
+                    <h2>ConectaFX • Síndrome do X Frágil</h2>
                 </a>
             </div>
             <div class="button">
@@ -20,18 +22,30 @@
         </div>
         <div class="introducao">
             <div class="form">
+                <h3 style="text-align: center; margin-bottom: 6px; color: #0f172a;">Acessar sua conta</h3>
+                <p class="form-subtitulo" style="text-align: center;">Selecione seu perfil e informe suas credenciais para continuar.</p>
                 <form>
-                    <center>
-                    <label>Selecione o perfil:</label><br>
-                    <input type="radio" name="perfil" value="Medico" required> Medico
-                    <input type="radio" name="perfil" value="Paciente"> Paciente<br><br>
+                    <div class="campo-grupo">
+                        <label>Selecione o perfil:</label>
+                        <div class="radio-opcoes">
+                            <label><input type="radio" name="perfil" value="Medico" required> Médico</label>
+                            <label><input type="radio" name="perfil" value="Paciente"> Paciente / Responsável</label>
+                        </div>
+                    </div>
 
-                    <input type="email" id="emailLogin" placeholder="Email" name="Email" required /> <br>
-                    <input type="password" id="senhaLogin" placeholder="Senha" name="senha" required /><br>
-                    <button type="button" onclick="entrar()">Entrar</button> 
-                    
-                    
-                    </center>
+                    <div class="campo-grupo">
+                        <label for="emailLogin">E-mail:</label>
+                        <input type="email" id="emailLogin" placeholder="exemplo@email.com" name="Email" required />
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="senhaLogin">Senha:</label>
+                        <input type="password" id="senhaLogin" placeholder="Digite sua senha" name="senha" required />
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="button" class="btn-primario" onclick="entrar()" style="width: 100%;">Entrar</button>
+                    </div>
                 </form>
             </div>
         </div>
